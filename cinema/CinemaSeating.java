@@ -62,4 +62,12 @@ public class CinemaSeating {
         }
         return ticketPrice;
     }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public int getSeats() {
+        return seats;
+    }
 }
