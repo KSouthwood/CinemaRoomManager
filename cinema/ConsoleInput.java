@@ -14,16 +14,29 @@ public class ConsoleInput {
         return number;
     }
 
-    public int getNumber(String msg, int minVal, int maxVal) {
-        int number = -1;
-        while (number == -1) {
+    /**
+     * Get an integer number from console input
+     *
+     * Get an integer number in a certain range (specified using minVal and maxVal) with a specified prompt (msg).
+     * Optionally make sure the input number is within the range (validate) or just pass back the invalid number.
+     *
+     * @param msg       String to be printed as a prompt
+     * @param minVal    Minimum value to accept
+     * @param maxVal    Maximum value to accept
+     * @param validate  Set to true to validate the input is in range
+     * @return  a valid integer in the range minVal - maxVal unless validate is false
+     */
+    public int getNumber(String msg, int minVal, int maxVal, boolean validate) {
+        int number = -2;
+        while (number == -2) {
             if (!msg.isEmpty()) {
                 System.out.println(msg);
             }
             number = getInput(minVal, maxVal);
-            if (number == -1) {
+            if (validate && number == -1) {
                 System.out.println("Invalid entry. Number must be between " + minVal + " and " +
                     maxVal + ".");
+                number = -2;
             }
         }
         return number;
